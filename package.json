@@ -1,0 +1,68 @@
+{
+  "name": "qualityhub-test-reporting",
+  "version": "1.0.0",
+  "description": "Unified multi-team test reporting framework supporting BDD, Playwright, TestCafe, Unit, Smoke and Integration tests with real-time pass/fail analytics",
+  "author": "Sandeepa Marpadga Venkata <sandeepa.marpadga@independent-research.dev>",
+  "license": "MIT",
+  "private": false,
+  "keywords": [
+    "test-reporting",
+    "bdd",
+    "playwright",
+    "testcafe",
+    "unit-testing",
+    "smoke-testing",
+    "integration-testing",
+    "pass-fail-analytics",
+    "multi-team",
+    "ci-cd",
+    "dashboard",
+    "quality-hub"
+  ],
+  "scripts": {
+    "start:ingestion": "node src/ingestion/server.js",
+    "start:analytics": "node src/analytics/engine.js",
+    "start:dashboard": "cd src/dashboard && npm start",
+    "start": "concurrently \"npm run start:ingestion\" \"npm run start:analytics\"",
+    "test": "jest --coverage",
+    "test:unit": "jest tests/unit --coverage",
+    "test:integration": "jest tests/integration --coverage",
+    "lint": "eslint src/ --ext .js",
+    "format": "prettier --write src/",
+    "docker:up": "docker-compose up -d",
+    "docker:down": "docker-compose down",
+    "setup": "npm install && npm run docker:up"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "kafkajs": "^2.2.4",
+    "axios": "^1.6.0",
+    "xml2js": "^0.6.2",
+    "ajv": "^8.12.0",
+    "uuid": "^9.0.0",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0",
+    "cors": "^2.8.5",
+    "helmet": "^7.1.0",
+    "ws": "^8.14.2",
+    "express-rate-limit": "^7.1.5"
+  },
+  "devDependencies": {
+    "jest": "^29.7.0",
+    "eslint": "^8.54.0",
+    "prettier": "^3.1.0",
+    "concurrently": "^8.2.2",
+    "supertest": "^6.3.3",
+    "@types/node": "^20.10.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coverageDirectory": "coverage",
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
