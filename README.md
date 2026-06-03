@@ -1,7 +1,7 @@
 # QualityHub — Unified Multi-Team Test Reporting Framework
 
 > **Independent Research by Sandeepa Marpadga Venkata**
-> Published in IJISAE (International Journal of Intelligent Systems and Applications in Engineering)
+
 
 ---
 
